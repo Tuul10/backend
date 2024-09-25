@@ -15,6 +15,6 @@ exports.updateComment = (request, response) => {
   filteredcomments.map(
     (comment) => ((comment.like = body.like), (comment.message = body.message))
   );
-  console.log(filteredcomments);
+
   response.status(200).json(filteredcomments);
 };

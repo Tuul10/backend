@@ -1,13 +1,15 @@
 const express = require("express");
+const customersRouter = require("./router/customer.srouter");
 
-const Router = require("./router/users");
+// const Router = require("./router/users");
 
 const app = express();
 
 app.use(express.json());
 
 // app.use(UserRouter);
-app.use(Router);
+// app.use(Router);
+app.use("/customers", customersRouter);
 
 const port = 8080;
 
