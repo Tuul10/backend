@@ -1,5 +1,6 @@
 const express = require("express");
-const customersRouter = require("./router/customer.srouter");
+const customersRouter = require("./router/customers.router");
+import { getProducts } from "./controller/products/products.controller";
 
 // const Router = require("./router/users");
 
@@ -9,7 +10,8 @@ app.use(express.json());
 
 // app.use(UserRouter);
 // app.use(Router);
-app.use("/customers", customersRouter);
+app.use("/", customersRouter);
+// app.use("/", getProducts);
 
 const port = 8080;
 

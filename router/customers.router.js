@@ -1,6 +1,10 @@
 import express from "express";
 
 import { sql } from "../database/index";
+import { getProducts } from "../controller/products/products.controller";
+import { addProducts } from "../controller/products/products.controller";
+import { getOrder } from "../controller/orders/orders.controller";
+import { getJoin } from "../controller/join/getJoin";
 
 const customersRouter = express.Router();
 
@@ -25,7 +29,7 @@ customersRouter.post("/", async (request, response) => {
 });
 
 customersRouter.put("/:id", async (request, response) => {
-  const { firstName, customerID } = request.body;
+  const { firstName } = request.body;
   const { id } = request.params;
   try {
     await sql`UPDATE customers
@@ -39,14 +43,20 @@ customersRouter.put("/:id", async (request, response) => {
 });
 customersRouter.delete("/:id", async (request, response) => {
   const { id } = request.params;
+  console.log(id);
   try {
     await sql`DELETE customers 
-              WHERE customerId = ${id}`;
+              WHERE customerID = ${id}`;
 
     response.status(200).json({ customer: request.body });
   } catch {
     response.status(400).json({ message: "no" });
   }
 });
+customersRouter.get("/products", getProducts);
+customersRouter.post("/products", addProducts);
+customersRouter.get("/orders", getOrder);
+customersRouter.post("/orders", getOrder);
+customersRouter.get("/join", getJoin);
 
 module.exports = customersRouter;
