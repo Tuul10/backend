@@ -4,7 +4,7 @@ import { sql } from "../database/index";
 import { getProducts } from "../controller/products/products.controller";
 import { addProducts } from "../controller/products/products.controller";
 import { getOrder } from "../controller/orders/orders.controller";
-import { getJoin } from "../controller/join/getJoin";
+import { addJoin, getJoin } from "../controller/join/getJoin";
 
 const customersRouter = express.Router();
 
@@ -58,5 +58,6 @@ customersRouter.post("/products", addProducts);
 customersRouter.get("/orders", getOrder);
 customersRouter.post("/orders", getOrder);
 customersRouter.get("/join", getJoin);
+customersRouter.post("/join", addJoin);
 
 module.exports = customersRouter;
